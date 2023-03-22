@@ -1,2 +1,6 @@
+<<<<<<< HEAD
+recordar practicar git hoy!
+=======
 Hola git
 Ponte a trabajar
+>>>>>>> 41497c4c75241b134636cabf0303a97a252932f4
