@@ -49,7 +49,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `comida`.`proveedores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `comida`.`proveedores` (
-  `idProveedoresP` INT(11) NULL,
+  `idProveedoresP` INT(11) NULL DEFAULT NULL,
   `PrimerNombreP` VARCHAR(45) NULL DEFAULT NULL,
   `SegundoNombreP` VARCHAR(45) NULL DEFAULT NULL,
   `PrimerApellidoP` VARCHAR(45) NULL DEFAULT NULL,
@@ -72,9 +72,10 @@ CREATE TABLE IF NOT EXISTS `comida`.`platillos` (
   `ImagenPL` VARCHAR(45) NOT NULL,
   `HorariosPL` VARCHAR(45) NOT NULL,
   `DireccionPL` VARCHAR(45) NOT NULL,
-  `CostosPL` VARCHAR(45) NULL DEFAULT NULL,
-  `CalificacionPL` VARCHAR(45) NULL DEFAULT NULL,
-  `DireccionP` VARCHAR(45) NULL DEFAULT NULL,
+  `CostosPL` VARCHAR(45) NOT NULL,
+  `CalificacionPL` VARCHAR(45) NOT NULL,
+  `DireccionP` VARCHAR(45) NOT NULL,
+  `FechaDeCreacionPL` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idPlatillosPL`),
   INDEX `DireccionP` (`DireccionP` ASC) ,
   CONSTRAINT `platillos_ibfk_1`
@@ -127,8 +128,8 @@ CREATE TABLE IF NOT EXISTS `comida`.`pedidos` (
   PRIMARY KEY (`idPedidos`),
   INDEX `idCompradoresC` (`idCompradoresC` ASC) ,
   INDEX `idPlatillosPL` (`idPlatillosPL` ASC) ,
-  INDEX `idTipoDePago` (`idTipoDePago` ASC),
-  INDEX `idRepartidorR` (`idRepartidorR` ASC),
+  INDEX `idTipoDePago` (`idTipoDePago` ASC) ,
+  INDEX `idRepartidorR` (`idRepartidorR` ASC) ,
   INDEX `fk_pedidos_status1_idx` (`status_idstatus` ASC) ,
   CONSTRAINT `fk_pedidos_status1`
     FOREIGN KEY (`status_idstatus`)
