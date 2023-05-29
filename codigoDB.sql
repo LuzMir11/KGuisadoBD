@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `comida`.`compradores` (
   `SegundoApellidoC` VARCHAR(45) NOT NULL,
   `DireccionC` VARCHAR(45) NOT NULL,
   `Num_TelefonoC` VARCHAR(45) NOT NULL,
+  `CorreoElectronicoC` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCompradoresC`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -51,16 +52,17 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `comida`.`proveedores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `comida`.`proveedores` (
-  `idProveedoresP` INT(11) NULL DEFAULT NULL,
-  `NombreUsuarioP` VARCHAR(8) NULL,
-  `ContraseñaP` VARCHAR(60) NULL,
-  `PrimerNombreP` VARCHAR(45) NULL DEFAULT NULL,
-  `SegundoNombreP` VARCHAR(45) NULL DEFAULT NULL,
-  `PrimerApellidoP` VARCHAR(45) NULL DEFAULT NULL,
-  `SegundoApellidoP` VARCHAR(45) NULL DEFAULT NULL,
+  `idProveedoresP` INT(11) NOT NULL,
+  `NombreUsuarioP` VARCHAR(8) NOT NULL,
+  `ContraseñaP` VARCHAR(60) NOT NULL,
+  `PrimerNombreP` VARCHAR(45) NOT NULL,
+  `SegundoNombreP` VARCHAR(45) NOT NULL,
+  `PrimerApellidoP` VARCHAR(45) NOT NULL,
+  `SegundoApellidoP` VARCHAR(45) NOT NULL,
   `DireccionP` VARCHAR(45) NOT NULL,
-  `ProveedorescolP` VARCHAR(45) NULL DEFAULT NULL,
-  `No_TelefonoP` VARCHAR(45) NULL DEFAULT NULL,
+  `ProveedorescolP` VARCHAR(45) NOT NULL,
+  `No_TelefonoP` VARCHAR(45) NOT NULL,
+  `CorreoElectronicoP` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`DireccionP`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
@@ -113,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `comida`.`repartidor` (
   `PrimerApellidoR` VARCHAR(45) NOT NULL,
   `SegundoApellidoR` VARCHAR(45) NOT NULL,
   `Num_TelefonoR` VARCHAR(45) NOT NULL,
+  `CorreoElectronicoR` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idRepartidorR`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
@@ -132,11 +135,11 @@ CREATE TABLE IF NOT EXISTS `comida`.`pedidos` (
   `idRepartidorR` INT(11) NULL DEFAULT NULL,
   `status_idstatus` INT(11) NOT NULL,
   PRIMARY KEY (`idPedidos`),
-  INDEX `idCompradoresC` (`idCompradoresC` ASC) ,
+  INDEX `idCompradoresC` (`idCompradoresC` ASC),
   INDEX `idPlatillosPL` (`idPlatillosPL` ASC) ,
   INDEX `idTipoDePago` (`idTipoDePago` ASC) ,
   INDEX `idRepartidorR` (`idRepartidorR` ASC) ,
-  INDEX `fk_pedidos_status1_idx` (`status_idstatus` ASC),
+  INDEX `fk_pedidos_status1_idx` (`status_idstatus` ASC) ,
   CONSTRAINT `fk_pedidos_status1`
     FOREIGN KEY (`status_idstatus`)
     REFERENCES `comida`.`status` (`idstatus`)
